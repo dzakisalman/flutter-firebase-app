@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: ^5.5.1
   google_sign_in: ^6.3.0
   get: ^4.6.6
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_test:
