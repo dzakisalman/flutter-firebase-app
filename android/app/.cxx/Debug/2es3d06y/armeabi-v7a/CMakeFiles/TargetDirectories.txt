@@ -1,0 +1,2 @@
+C:/Users/USER/Documents/KULIAH/Semester 6/flutter_firebase_app/android/app/.cxx/Debug/2es3d06y/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/USER/Documents/KULIAH/Semester 6/flutter_firebase_app/android/app/.cxx/Debug/2es3d06y/armeabi-v7a/CMakeFiles/rebuild_cache.dir
