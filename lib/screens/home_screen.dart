@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../controllers/auth_controller.dart';
 
 class HomeScreen extends GetView<AuthController> {
@@ -68,10 +69,8 @@ class HomeScreen extends GetView<AuthController> {
       final Uri emailLaunchUri = Uri(
         scheme: 'mailto',
         path: email,
-        queryParameters: {
-          'subject': 'Hello from Flutter App',
-          'body': 'Hi, this is a message from our Flutter application.',
-        },
+        query:
+            'subject=Halo, ini subject &body=Halo, saya ingin mengirim email kepada Anda.',
       );
       await launchUrl(emailLaunchUri);
     } catch (e) {
