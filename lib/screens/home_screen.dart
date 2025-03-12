@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../controllers/auth_controller.dart';
 import '../utils/utils.dart';
@@ -65,6 +66,13 @@ class HomeScreen extends GetView<AuthController> {
               ),
             ),
             SizedBox(height: 24),
+            CustomButtons.buildLauncherButton(
+              icon: Icons.qr_code_scanner,
+              label: "Pindai QR/Barcode",
+              color: Colors.deepOrange,
+              onPressed: () => Get.to(() => QRScannerScreen()),
+            ),
+            SizedBox(height: 12),
             CustomButtons.buildLauncherButton(
               icon: Icons.open_in_browser,
               label: "Buka URL di Aplikasi",
@@ -144,6 +152,36 @@ class HomeScreen extends GetView<AuthController> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class QRScannerScreen extends StatelessWidget {
+  const QRScannerScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('QR/Barcode Scanner'),
+      ),
+      body: MobileScanner(
+        onDetect: (capture) {
+          final List<Barcode> barcodes = capture.barcodes;
+          for (final barcode in barcodes) {
+            if (barcode.rawValue != null) {
+              Get.snackbar(
+                'Hasil Pemindaian',
+                'Konten: ${barcode.rawValue}',
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.green,
+                colorText: Colors.white,
+                duration: Duration(seconds: 3),
+              );
+            }
+          }
+        },
       ),
     );
   }
