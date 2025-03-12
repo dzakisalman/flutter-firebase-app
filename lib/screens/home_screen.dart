@@ -1,11 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/auth_controller.dart';
 import '../utils/utils.dart';
@@ -75,7 +69,8 @@ class HomeScreen extends GetView<AuthController> {
               icon: Icons.open_in_browser,
               label: "Buka URL di Aplikasi",
               color: Colors.blue,
-              onPressed: () => Utils.launchURL('https://flutter.dev', inApp: true),
+              onPressed: () =>
+                  Utils.launchURL('https://flutter.dev', inApp: true),
             ),
             SizedBox(height: 12),
             CustomButtons.buildLauncherButton(
@@ -104,6 +99,13 @@ class HomeScreen extends GetView<AuthController> {
               label: "Kirim Email",
               color: Colors.red,
               onPressed: () => Utils.sendEmail('example@gmail.com'),
+            ),
+            SizedBox(height: 12),
+            CustomButtons.buildLauncherButton(
+              icon: Icons.picture_as_pdf,
+              label: "Buka File PDF",
+              color: Colors.brown,
+              onPressed: Utils.openPDF,
             ),
             SizedBox(height: 24),
             Container(

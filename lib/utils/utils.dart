@@ -1,9 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
   static final ImagePicker _picker = ImagePicker();
@@ -190,4 +193,38 @@ class Utils {
       );
     }
   }
-} 
+
+  static Future<void> openPDF() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+      );
+
+      if (result != null) {
+        final file = File(result.files.single.path!);
+
+        Get.to(() => Scaffold(
+              appBar: AppBar(
+                title: Text(result.files.single.name),
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () => Get.back(),
+                ),
+              ),
+              body: const PDF().fromPath(
+                file.path,
+              ),
+            ));
+      }
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Tidak dapat membuka file PDF: ${e.toString()}',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
+  }
+}
