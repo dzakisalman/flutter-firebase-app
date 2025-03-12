@@ -44,7 +44,11 @@ dependencies:
   image_picker: ^1.0.7
   flutter_cached_pdfview: ^0.4.3
   file_picker: ^9.0.2
+  mobile_scanner: ^6.0.7
 
+
+dependency_overrides:
+  vm_service: ^15.0.0
 
 dev_dependencies:
   flutter_test:
