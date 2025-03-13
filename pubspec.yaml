@@ -45,6 +45,9 @@ dependencies:
   flutter_cached_pdfview: ^0.4.3
   file_picker: ^9.0.2
   mobile_scanner: ^6.0.7
+  lottie: ^3.3.1
+  flutter_gen: ^5.10.0
+  glassmorphism: ^3.0.0
 
 
 dependency_overrides:
@@ -53,6 +56,8 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  flutter_gen_runner:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -73,6 +78,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/animations/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
