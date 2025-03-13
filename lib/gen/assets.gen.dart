@@ -12,23 +12,24 @@ import 'package:flutter/widgets.dart';
 class $AssetsAnimationsGen {
   const $AssetsAnimationsGen();
 
-  /// File path: assets/animations/gps.json
-  String get gps => 'assets/animations/gps.json';
+  /// File path: assets/animations/logo.json
+  String get logo => 'assets/animations/logo.json';
 
   /// List of all assets
-  List<String> get values => [gps];
+  List<String> get values => [logo];
 }
 
 class Assets {
   const Assets._();
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
+  static const AssetGenImage bg = AssetGenImage('assets/bg.png');
   static const AssetGenImage googleLogo = AssetGenImage(
     'assets/google_logo.png',
   );
 
   /// List of all assets
-  static List<AssetGenImage> get values => [googleLogo];
+  static List<AssetGenImage> get values => [bg, googleLogo];
 }
 
 class AssetGenImage {

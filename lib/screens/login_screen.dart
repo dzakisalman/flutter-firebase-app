@@ -28,205 +28,226 @@ class LoginScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 20),
-                Center(
-                  child: Lottie.asset(
-                    Assets.animations.gps,
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'Selamat Datang!',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'Silakan masuk ke akun Anda',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
-                ),
-                SizedBox(height: 20),
-                GlassmorphicContainer(
-                  width: double.infinity,
-                  height: 250,
-                  borderRadius: 16,
-                  blur: 15,
-                  alignment: Alignment.center,
-                  border: 2,
-                  linearGradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.green.withOpacity(0.2),
-                      Colors.blue.withOpacity(0.1),
-                    ],
-                  ),
-                  borderGradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.green.withOpacity(0.5),
-                      Colors.blue.withOpacity(0.2),
-                    ],
-                  ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/bg.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.black.withOpacity(0.4),
+                Colors.black.withOpacity(0.6),
+              ],
+            ),
+          ),
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20),
+                    Center(
+                      child: Lottie.asset(
+                        Assets.animations.logo,
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Selamat Datang!',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'Silakan masuk ke akun Anda',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    GlassmorphicContainer(
+                      width: double.infinity,
+                      height: 250,
+                      borderRadius: 16,
+                      blur: 15,
+                      alignment: Alignment.center,
+                      border: 2,
+                      linearGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.green.withOpacity(0.2),
+                          Colors.blue.withOpacity(0.1),
+                        ],
+                      ),
+                      borderGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.green.withOpacity(0.5),
+                          Colors.blue.withOpacity(0.2),
+                        ],
+                      ),
 
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            prefixIcon:
-                                Icon(Icons.email_outlined, color: Colors.blue),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide.none,
-                            ),
-                            filled: true,
-                            fillColor: Colors.white.withOpacity(0.8),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 12),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        TextField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: 'Password',
-                            prefixIcon:
-                                Icon(Icons.lock_outline, color: Colors.blue),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide.none,
-                            ),
-                            filled: true,
-                            fillColor: Colors.white.withOpacity(0.8),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 12),
-                          ),
-                        ),
-                        SizedBox(height: 24),
-                        GetBuilder<AuthController>(
-                          builder: (_) => ElevatedButton(
-                            onPressed:
-                                controller.isLoading ? null : loginWithEmail,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue.withOpacity(0.9),
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: 16),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextField(
+                              controller: _emailController,
+                              decoration: InputDecoration(
+                                hintText: 'Email',
+                                prefixIcon:
+                                    Icon(Icons.email_outlined, color: Colors.blue),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: Colors.white.withOpacity(0.8),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 12),
                               ),
-                              minimumSize: Size(double.infinity, 50),
-                              elevation: 0,
                             ),
-                            child: controller.isLoading
-                                ? SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                          Colors.white),
-                                      strokeWidth: 2,
-                                    ),
-                                  )
-                                : Text(
-                                    "Masuk",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
+                            SizedBox(height: 16),
+                            TextField(
+                              controller: _passwordController,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                hintText: 'Password',
+                                prefixIcon:
+                                    Icon(Icons.lock_outline, color: Colors.blue),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: Colors.white.withOpacity(0.8),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 12),
+                              ),
+                            ),
+                            SizedBox(height: 24),
+                            GetBuilder<AuthController>(
+                              builder: (_) => ElevatedButton(
+                                onPressed:
+                                    controller.isLoading ? null : loginWithEmail,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue.withOpacity(0.9),
+                                  foregroundColor: Colors.white,
+                                  padding: EdgeInsets.symmetric(vertical: 16),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
+                                  minimumSize: Size(double.infinity, 50),
+                                  elevation: 0,
+                                ),
+                                child: controller.isLoading
+                                    ? SizedBox(
+                                        height: 20,
+                                        width: 20,
+                                        child: CircularProgressIndicator(
+                                          valueColor: AlwaysStoppedAnimation<Color>(
+                                              Colors.white),
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : Text(
+                                        "Masuk",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 24),
+                    Row(
+                      children: [
+                        Expanded(child: Divider(color: Colors.white54)),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Text(
+                            'Atau masuk dengan',
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
+                        Expanded(child: Divider(color: Colors.white54)),
                       ],
                     ),
-                  ),
-                ),
-                SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(child: Divider()),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        'Atau masuk dengan',
-                        style: TextStyle(color: Colors.grey[600]),
+                    SizedBox(height: 24),
+                    GetBuilder<AuthController>(
+                      builder: (_) => OutlinedButton(
+                        onPressed: controller.isLoading ? null : loginWithGoogle,
+                        style: OutlinedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 16),
+                          side: BorderSide(color: Colors.grey[300]!),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          minimumSize: Size(double.infinity, 50),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/google_logo.png', height: 24),
+                            SizedBox(width: 12),
+                            Text(
+                              'Masuk dengan Google',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Expanded(child: Divider()),
-                  ],
-                ),
-                SizedBox(height: 24),
-                GetBuilder<AuthController>(
-                  builder: (_) => OutlinedButton(
-                    onPressed: controller.isLoading ? null : loginWithGoogle,
-                    style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      side: BorderSide(color: Colors.grey[300]!),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      minimumSize: Size(double.infinity, 50),
-                    ),
-                    child: Row(
+                    SizedBox(height: 24),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/google_logo.png', height: 24),
-                        SizedBox(width: 12),
                         Text(
-                          'Masuk dengan Google',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w500,
+                          'Belum punya akun? ',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        TextButton(
+                          onPressed: () => Get.toNamed('/register'),
+                          child: Text(
+                            'Daftar',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ),
-                SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Belum punya akun? ',
-                      style: TextStyle(color: Colors.grey[600]),
-                    ),
-                    TextButton(
-                      onPressed: () => Get.toNamed('/register'),
-                      child: Text(
-                        'Daftar',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -234,4 +255,3 @@ class LoginScreen extends GetView<AuthController> {
     );
   }
 }
-//
